@@ -1,19 +1,17 @@
 const addToCart = (cart, setCart, item) => {
   
-  if(cart == []){
-    localStorage.setItem('cart',[]);
-  }
+  
 
-  const updatedCart = cart.find((cartItem) => cartItem.id === item.id)
+  const updatedCart = cart.find((cartItem) => cartItem._id === item._id)
     ? cart.map((cartItem) =>
-        cartItem.id === item.id
+        cartItem._id === item._id
           ? { ...cartItem, quantity: cartItem.quantity + 1 }
           : cartItem
       )
     : [...cart, { ...item, quantity: 1 }];
 
   setCart(updatedCart);
-  localStorage.setItem('cart',updatedCart);
+  localStorage.setItem('cart',JSON.stringify(updatedCart));
 };
 
 export default addToCart;

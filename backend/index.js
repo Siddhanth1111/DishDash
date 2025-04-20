@@ -14,6 +14,12 @@ app.use("/api/users", userRoutes);
 const menuRoute = require("./routes/menu")
 app.use("/menu",menuRoute)
 
+const confirmRoute = require("./routes/confirm")
+app.use("/confirm",confirmRoute)
+
+const myordersRoute = require("./routes/myorders")
+app.use("/myorders",myordersRoute)
+
 app.listen(PORT,()=>{
     console.log(`Server started on port ${PORT}`)
 })

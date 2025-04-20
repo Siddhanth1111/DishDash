@@ -10,6 +10,7 @@ import Southern from "./pages/Southern";
 import Kathi from "./pages/Kathi";
 import Quench from "./pages/Quench";
 import Navbar from "./components/Navbar";
+import MyOrders from "./pages/myOrders";
 // import CartPage from "./pages/CartPage";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       <Route path="/southern" element={<Southern></Southern>}></Route>
       <Route path="/kathi" element={<Kathi></Kathi>}></Route>
       <Route path="/quench" element={<Quench></Quench>}></Route>
+      <Route path="/myorders" element={<MyOrders></MyOrders>}></Route>
       
     </Routes>
     </div>
