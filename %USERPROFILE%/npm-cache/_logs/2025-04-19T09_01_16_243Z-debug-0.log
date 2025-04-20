@@ -1,0 +1,38 @@
+0 verbose cli D:\node.exe D:\node_modules\npm\bin\npm-cli.js
+1 info using npm@10.9.0
+2 info using node@v22.12.0
+3 silly config load:file:D:\node_modules\npm\npmrc
+4 silly config load:file:d:\JavaScript\DishDash-main\DishDash-main\DissDash\.npmrc
+5 silly config load:file:C:\Users\user\.npmrc
+6 silly config load:file:d:\JavaScript\DishDash-main\DishDash-main\DissDash\user\npm-global\etc\npmrc
+7 verbose title npm view dissdash description dist-tags.latest homepage version time
+8 verbose argv "view" "--json" "--" "dissdash" "description" "dist-tags.latest" "homepage" "version" "time"
+9 verbose logfile logs-max:10 dir:d:\JavaScript\DishDash-main\DishDash-main\DissDash\%USERPROFILE%\npm-cache\_logs\2025-04-19T09_01_16_243Z-
+10 verbose logfile d:\JavaScript\DishDash-main\DishDash-main\DissDash\%USERPROFILE%\npm-cache\_logs\2025-04-19T09_01_16_243Z-debug-0.log
+11 silly logfile done cleaning log files
+12 http fetch GET 404 https://registry.npmjs.org/dissdash 1054ms (cache skip)
+13 verbose stack HttpErrorGeneral: 404 Not Found - GET https://registry.npmjs.org/dissdash - Not found
+13 verbose stack     at D:\node_modules\npm\node_modules\npm-registry-fetch\lib\check-response.js:95:15
+13 verbose stack     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+13 verbose stack     at async RegistryFetcher.packument (D:\node_modules\npm\node_modules\pacote\lib\registry.js:90:19)
+13 verbose stack     at async #getData (D:\node_modules\npm\lib\commands\view.js:135:20)
+13 verbose stack     at async #viewPackage (D:\node_modules\npm\lib\commands\view.js:112:28)
+13 verbose stack     at async View.exec (D:\node_modules\npm\lib\commands\view.js:70:5)
+13 verbose stack     at async Npm.exec (D:\node_modules\npm\lib\npm.js:207:9)
+13 verbose stack     at async module.exports (D:\node_modules\npm\lib\cli\entry.js:74:5)
+14 verbose statusCode 404
+15 verbose pkgid dissdash@*
+16 error code E404
+17 error 404 Not Found - GET https://registry.npmjs.org/dissdash - Not found
+18 error 404
+19 error 404  'dissdash@*' is not in this registry.
+20 error 404
+21 error 404 Note that you can also install from a
+22 error 404 tarball, folder, http url, or git url.
+23 verbose cwd d:\JavaScript\DishDash-main\DishDash-main\DissDash
+24 verbose os Windows_NT 10.0.22631
+25 verbose node v22.12.0
+26 verbose npm  v10.9.0
+27 verbose exit 1
+28 verbose code 1
+29 error A complete log of this run can be found in: d:\JavaScript\DishDash-main\DishDash-main\DissDash\%USERPROFILE%\npm-cache\_logs\2025-04-19T09_01_16_243Z-debug-0.log
