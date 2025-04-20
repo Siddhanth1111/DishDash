@@ -1,11 +1,18 @@
-import ReactDOM from "react-dom/client";
+import { ClerkProvider } from "@clerk/clerk-react";
 import { BrowserRouter } from "react-router-dom";
-import App from "./App"; // this is your Home page now
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import './index.css';
+import { RecoilRoot } from "recoil";
 
-import "./index.css";
+const PUBLISHABLE_KEY = "pk_test_cHJvdWQtZmx5LTczLmNsZXJrLmFjY291bnRzLmRldiQ";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <App></App>
-  </BrowserRouter>
+  <RecoilRoot>
+  <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </ClerkProvider>
+  </RecoilRoot>
 );
