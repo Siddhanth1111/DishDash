@@ -1,0 +1,20 @@
+0 verbose cli D:\node.exe D:\node_modules\npm\bin\npm-cli.js
+1 info using npm@10.9.0
+2 info using node@v22.12.0
+3 silly config load:file:D:\node_modules\npm\npmrc
+4 silly config load:file:d:\JavaScript\DishDash-main\DishDash-main\DissDash\backend\.npmrc
+5 silly config load:file:C:\Users\user\.npmrc
+6 silly config load:file:d:\JavaScript\DishDash-main\DishDash-main\DissDash\backend\user\npm-global\etc\npmrc
+7 verbose title npm view mongoose description dist-tags.latest homepage version time
+8 verbose argv "view" "--json" "--" "mongoose" "description" "dist-tags.latest" "homepage" "version" "time"
+9 verbose logfile logs-max:10 dir:d:\JavaScript\DishDash-main\DishDash-main\DissDash\backend\%USERPROFILE%\npm-cache\_logs\2025-04-21T12_42_39_807Z-
+10 verbose logfile d:\JavaScript\DishDash-main\DishDash-main\DissDash\backend\%USERPROFILE%\npm-cache\_logs\2025-04-21T12_42_39_807Z-debug-0.log
+11 silly logfile start cleaning logs, removing 3 files
+12 silly logfile done cleaning log files
+13 http fetch GET 200 https://registry.npmjs.org/mongoose 286ms (cache updated)
+14 verbose cwd d:\JavaScript\DishDash-main\DishDash-main\DissDash\backend
+15 verbose os Windows_NT 10.0.22631
+16 verbose node v22.12.0
+17 verbose npm  v10.9.0
+18 verbose exit 0
+19 info ok

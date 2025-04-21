@@ -23,6 +23,9 @@ app.use("/myorders",myordersRoute)
 const paymentRoute = require("./routes/payment")
 app.use("/create-checkout-session",paymentRoute)
 
+const adminRoute = require("./routes/admin")
+app.use("/admin",adminRoute)
+
 app.listen(PORT,()=>{
     console.log(`Server started on port ${PORT}`)
 })

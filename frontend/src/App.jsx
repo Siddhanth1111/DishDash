@@ -12,6 +12,9 @@ import Quench from "./pages/Quench";
 import Navbar from "./components/Navbar";
 import MyOrders from "./pages/myOrders";
 import Success from "./components/Success";
+import SouthernAdmin from "./pages/SouthernAdmin";
+import QuenchAdmin from "./pages/QuenchAdmin";
+import KathiAdmin from "./pages/KathiAdmin";
 // import CartPage from "./pages/CartPage";
 
 function App() {
@@ -31,6 +34,9 @@ function App() {
       <Route path="/quench" element={<Quench></Quench>}></Route>
       <Route path="/myorders" element={<MyOrders></MyOrders>}></Route>
       <Route path="/success" element={<Success></Success>}></Route>
+      <Route path="/admin/southern" element={<SouthernAdmin></SouthernAdmin>}></Route>
+      <Route path="/admin/quench" element={<QuenchAdmin></QuenchAdmin>}></Route>
+      <Route path="/admin/kathi" element={<KathiAdmin></KathiAdmin>}></Route>
       
     </Routes>
     </div>

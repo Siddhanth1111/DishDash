@@ -1,70 +1,35 @@
-import { useUser } from "@clerk/clerk-react";
 import { useEffect, useMemo, useState } from "react";
 
-function MyOrders() {
-  const [list, setList] = useState([]);
-  const { user, isLoaded } = useUser();
-  const [selectedOutlet, setSelectedOutlet] = useState("all"); // Tracks selected tab
+function KathiAdmin(){
+    const [list,setList] = useState([]);
+    useEffect(()=>{
+        fetch("http://localhost:8080/admin/kathi",{
+            method : "get",
+            headers : {
+                "Content-Type" : "application/json"
+            }
+        })
+        .then(response => response.json())
+        .then((data)=>{
+            setList(data);
+        })
+    },[])
 
-  const userPhone = user?.phoneNumbers?.[0]?.phoneNumber?.replace(/^\+/, "");
+    let pendingList = useMemo(()=>{
+        return list.filter(x => x.status.includes("pending"))
+    },[list]);
 
-  useEffect(() => {
-    if (!userPhone) return;
 
-    fetch("http://localhost:8080/myorders/fetch", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userPhone }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Fetched Orders:", data);
-        setList(data);
-      })
-      .catch((err) => console.error("Error fetching orders:", err));
-  }, [userPhone]);
-
-  // Filter orders based on selected outlet
-  const filteredList = useMemo(() => {
-    return selectedOutlet === "all"
-      ? list // Show all orders
-      : list.filter((order) => order.outlet.toLowerCase() === selectedOutlet);
-  }, [list, selectedOutlet]);
-
-  // Sort orders by time (latest first)
-  const sortedList = useMemo(() => {
-    return filteredList.sort((a, b) => new Date(b.time) - new Date(a.time));
-  }, [filteredList]);
-
-  if (!isLoaded) return <div>Loading...</div>;
-
-  return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">Your Orders</h2>
-
-      {/* Outlet Tabs */}
-      <div className="flex space-x-4 mb-6">
-        {["all", "kathi", "southern", "quench"].map((outlet) => (
-          <button
-            key={outlet}
-            onClick={() => setSelectedOutlet(outlet)}
-            className={`px-4 py-2 rounded-lg hover:cursor-pointer text-sm font-medium ${
-              selectedOutlet === outlet
-                ? "bg-yellow-500 text-white"
-                : "bg-gray-200 text-gray-700"
-            } transition`}
-          >
-            {outlet.charAt(0).toUpperCase() + outlet.slice(1)}
-          </button>
-        ))}
-      </div>
-
-      {/* Orders List */}
-      {sortedList.length === 0 ? (
-        <p className="text-gray-500">No orders found.</p>
-      ) : (
-        <div className="space-y-6">
-          {sortedList.map((order, idx) => (
+    return(
+        <div>
+  <h2 style={{ fontSize: "1.8rem", marginBottom: "20px", fontWeight: "bold", color: "#2c3e50" }}>
+    Active Orders
+  </h2>
+  {pendingList.length === 0 ? (
+    <p style={{ fontSize: "1rem", color: "#888" }}>No orders found.</p>
+  ) : (
+    <div className="space-y-6">
+          {pendingList.map((order, idx) => (
             <div
               key={order._id || idx}
               className="max-w-2xl mx-auto bg-white rounded-xl overflow-hidden shadow-lg border border-gray-200 transition-all duration-200 hover:shadow-xl"
@@ -82,6 +47,7 @@ function MyOrders() {
                     <p className="text-xs text-gray-500 mt-1">
                       Expected Time : In {Math.floor(Math.random() * 5 + 15)} Minutes
                     </p>
+                    
                   </div>
                   <div className="flex items-center">
                     <span
@@ -127,7 +93,9 @@ function MyOrders() {
               {/* Total section */}
               <div className="p-4 bg-gray-50 border-t border-gray-200">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium text-gray-600">Total Amount</span>
+                  <span className="text-sm font-medium text-gray-600">
+                    Total Amount
+                  </span>
                   <span className="text-lg font-semibold text-gray-900">
                     ₹{order.totalPrice.toFixed(2)}
                   </span>
@@ -138,7 +106,9 @@ function MyOrders() {
         </div>
       )}
     </div>
-  );
+    )
+        
+    
 }
 
-export default MyOrders;
+export default KathiAdmin

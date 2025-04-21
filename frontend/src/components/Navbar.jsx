@@ -41,7 +41,7 @@ const Navbar = () => {
     <div className="bg-gray-900 w-full flex items-center justify-between p-4">
       <div className="text-yellow-600 font-bold text-3xl mx-4">DishDash.</div>
 
-      <ul className="flex space-x-10 text-yellow-600">
+      <ul className="flex space-x-20 ml-39 text-yellow-600">
         <li className="hover:cursor-pointer hover:bg-cyan-50 hover:text-black rounded-2xl p-2" onClick={()=>{
           navigate("/")
         }}>
@@ -52,23 +52,14 @@ const Navbar = () => {
         ]}>
           My Orders
         </li>
-        <li
-          
-          className="hover:cursor-pointer hover:bg-cyan-50 hover:text-black rounded-2xl p-2"
-          onClick={()=>[
-            navigate("/cart")
-          ]}
-        >
-          Cart 
+        <li className="hover:cursor-pointer hover:bg-cyan-50 hover:text-black rounded-2xl p-2" onClick={()=>[
+          navigate("/contact")
+        ]}>
+          Contact Us
         </li>
       </ul>
 
       <div className="flex space-x-10 mx-4 text-yellow-600">
-        <button className="border p-2 rounded-xl hover:text-black hover:bg-cyan-50">
-          Contact us
-        </button>
-
-
         {isSignedIn ? (
         <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
           <span>Hello, {user.fullName || "User"} 👋</span>
