@@ -1,8 +1,12 @@
 import removeFromCart from "../utils/removeFromCart";
 import updateQuantity from "../utils/updateQuantity";
 import { useUser } from "@clerk/clerk-react";
+import { loadStripe } from "@stripe/stripe-js";
+import { useState } from "react";
+const stripePromise = loadStripe("pk_test_51RFvmwRmmd7ZuCtZTAEPc4nIHDSh21Pkhj5Q0cc4tm3lhsgroQxGGBpIYw2rQkkhMkx2UIi3bVuiP23xOHuQctYT00zPKah976");
 
 const CartModal = ({ cart, setCart, outlet}) => {
+  const [loading, setLoading] = useState(false);
   const totalPrice = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
@@ -13,8 +17,44 @@ const CartModal = ({ cart, setCart, outlet}) => {
     return <div>Loading...</div>; // or just return null
   }
 
+
+
   
   const userPhone = user.phoneNumbers?.[0]?.phoneNumber?.replace(/^\+/, '');
+
+  const handleCheckout = async () => {
+    setLoading(true);
+    try {
+      const stripe = await stripePromise;
+
+      localStorage.setItem("orderDetails",JSON.stringify({outlet,totalPrice}));
+
+
+      const response = await fetch("http://localhost:8080/create-checkout-session/payment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: cart.map(({ _id, food, price, quantity }) => ({
+            food, price, quantity
+          }))
+        }),
+      });
+  
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || "Payment failed");
+      }
+  
+      const { id: sessionId } = await response.json();
+      const { error } = await stripe.redirectToCheckout({ sessionId });
+  
+      if (error) throw error;
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
 
   return (
@@ -120,10 +160,10 @@ const CartModal = ({ cart, setCart, outlet}) => {
                 <span>Total:</span>
                 <span>Rs.{totalPrice.toFixed(2)}</span>
               </div>
-              <button onClick={()=>{
-                confirmOrder(outlet,cart, userPhone, totalPrice,setCart);
-              }} className="w-full bg-gray-900 text-white py-3 rounded-lg hover:bg-gray-700 hover:cursor-pointer transition-colors font-medium">
-                Proceed to Checkout
+              <button onClick={handleCheckout}
+                    disabled={loading}
+               className="w-full bg-gray-900 text-white py-3 rounded-lg hover:bg-gray-700 hover:cursor-pointer transition-colors font-medium">
+                {loading ? "Processing..." : "Checkout Now"}
               </button>
             </div>
           </>
@@ -132,6 +172,8 @@ const CartModal = ({ cart, setCart, outlet}) => {
     </div>
   );
 };
+
+
 
 function confirmOrder(outlet,cart,userPhone,totalPrice,setCart){
     fetch(`http://localhost:8080/confirm`,{

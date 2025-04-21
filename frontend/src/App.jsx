@@ -11,6 +11,7 @@ import Kathi from "./pages/Kathi";
 import Quench from "./pages/Quench";
 import Navbar from "./components/Navbar";
 import MyOrders from "./pages/myOrders";
+import Success from "./components/Success";
 // import CartPage from "./pages/CartPage";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
       <Route path="/kathi" element={<Kathi></Kathi>}></Route>
       <Route path="/quench" element={<Quench></Quench>}></Route>
       <Route path="/myorders" element={<MyOrders></MyOrders>}></Route>
+      <Route path="/success" element={<Success></Success>}></Route>
       
     </Routes>
     </div>
