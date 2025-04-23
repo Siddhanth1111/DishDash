@@ -38,7 +38,7 @@ def create_payment_link():
         "notify": {
             "sms": True
         },
-        "callback_url": "https://yourdomain.com/success.html",
+        "callback_url": "https://yourdomain.com/success.html",# Replace with your success URL
         "callback_method": "get"
     }
 
