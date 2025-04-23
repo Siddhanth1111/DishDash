@@ -22,6 +22,40 @@ const CartModal = ({ cart, setCart, outlet}) => {
   
   const userPhone = user.phoneNumbers?.[0]?.phoneNumber?.replace(/^\+/, '');
 
+  //Razor pay part from here
+  const HandleCheckout = async () => {
+    const totalAmount = cart.reduce((sum,item) => sum + item.price * item.quantity, 0);
+    const items = cart.map(item => item.name);
+    try{
+      setLoading(true);//loading on
+
+      const response = await fetch("http://localhost:5000/create-payment-link", {// THIS REFERS TO THE PYTHON FILE
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ 
+          amount : totalAmount, 
+          items: items,//SENDS A LIST OF ITEMS TO THE PYTHON FILE
+          customer_name:user.fullName,
+          customer_phone: userPhone,
+        }),
+      
+      });
+      const data= await response.json();
+      if(response.ok){
+        //it saves the pending order 
+        localStorage.setItem("pendingOrder",JSON.stringify({outlet,cart,userPhone,totalPrice: totalAmount }));
+        window.location.href = data.payment_url;//redirect to payment url
+      }else{
+        alert("Error creating payment link: "+(data.error?.description || "Unknown error"));
+      }
+    } catch(error){
+      console.error("Error creating payment link:", error);
+      alert("Something went wrong TEHEE!");
+    } finally{ setLoading(false); }//loading off
+  };
+// Razor pay part ended LOL LOL LOL!!!
   const handleCheckout = async () => {
     setLoading(true);
     try {
@@ -160,7 +194,7 @@ const CartModal = ({ cart, setCart, outlet}) => {
                 <span>Total:</span>
                 <span>Rs.{totalPrice.toFixed(2)}</span>
               </div>
-              <button onClick={handleCheckout}
+              <button onClick={HandleCheckout} // Changed to RazorPay if you want to use stripe then change it to handleCheckout
                     disabled={loading}
                className="w-full bg-gray-900 text-white py-3 rounded-lg hover:bg-gray-700 hover:cursor-pointer transition-colors font-medium">
                 {loading ? "Processing..." : "Checkout Now"}
