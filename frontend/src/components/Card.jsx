@@ -1,24 +1,31 @@
 import React from "react";
 
-function Card({ OutletName, onClick }) { // Fixed prop name to onClick
+function Card({ OutletName, onClick, image }) {
   return (
-    <div 
-      className="flex flex-col w-100 bg-gray-700 rounded-2xl transform transition-transform duration-300 hover:scale-105 hover:cursor-pointer"
-      onClick={onClick} // Added onClick handler here
+    <div
+      onClick={onClick}
+      className="cursor-pointer w-80 bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300 ease-in-out"
     >
-      <div>
-        <img 
-          className="rounded-t-2xl p-2 w-full h-48 object-cover"
-          src="https://static.sociofyme.com/thumb/imgsize-321670,msid-98331207,width-400,resizemode-4/98331207.jpg"
+      {/* Optional image section */}
+      {image && (
+        <img
+          src={image}
           alt={OutletName}
+          className="w-full h-48 object-cover"
         />
-      </div>
+      )}
 
-      <div className="bg-white h-5"></div>
-
-      <div className="bg-gray-700 text-white text-center p-2 rounded-b-2xl">
-        <h2 className="font-bold text-2xl mb-2 text-yellow-600">{OutletName}</h2>
-        <p>Welcome to the world of {OutletName}</p>
+      {/* Text content */}
+      <div className="p-6 text-center">
+        <h2 className="text-2xl font-semibold text-white mb-2 tracking-wide">
+          {OutletName.replace("_", " ")}
+        </h2>
+        <p className="text-gray-400 text-sm">
+          Explore the best of {OutletName.replace("_", " ")} cuisine.
+        </p>
+        <button className="mt-4 bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-2 px-4 rounded-full transition duration-300">
+          Visit Outlet
+        </button>
       </div>
     </div>
   );

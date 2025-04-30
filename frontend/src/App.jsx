@@ -15,6 +15,7 @@ import Success from "./components/Success";
 import SouthernAdmin from "./pages/SouthernAdmin";
 import QuenchAdmin from "./pages/QuenchAdmin";
 import KathiAdmin from "./pages/KathiAdmin";
+import ContactPage from "./pages/Contact";
 // import CartPage from "./pages/CartPage";
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
       <Route path="/admin/southern" element={<SouthernAdmin></SouthernAdmin>}></Route>
       <Route path="/admin/quench" element={<QuenchAdmin></QuenchAdmin>}></Route>
       <Route path="/admin/kathi" element={<KathiAdmin></KathiAdmin>}></Route>
+      <Route path="/contact" element={<ContactPage></ContactPage>}></Route>
       
     </Routes>
     </div>
