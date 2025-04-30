@@ -43,7 +43,7 @@ const ContactPage = () => {
               <div>
                 <h3 className="text-gray-300 text-sm font-medium">Phone</h3>
                 <p className="text-yellow-400 text-lg font-medium hover:text-yellow-300 transition-colors">
-                  +91 8467119022
+                  +91 9256591429
                 </p>
               </div>
             </motion.div>
@@ -58,7 +58,7 @@ const ContactPage = () => {
               <div>
                 <h3 className="text-gray-300 text-sm font-medium">Email</h3>
                 <p className="text-yellow-400 text-lg font-medium hover:text-yellow-300 transition-colors">
-                  contact@dishdash.com
+                  siddhanthchauhan1111mpspn@gmail.com
                 </p>
               </div>
             </motion.div>
@@ -98,6 +98,7 @@ const ContactPage = () => {
             </motion.div>
 
             {/* Contact Form Placeholder */}
+            
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
