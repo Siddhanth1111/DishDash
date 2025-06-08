@@ -10,7 +10,7 @@ import Southern from "./pages/Southern";
 import Kathi from "./pages/Kathi";
 import Quench from "./pages/Quench";
 import Navbar from "./components/Navbar";
-import MyOrders from "./pages/myOrders";
+import MyOrders from "./pages/MyOrders";
 import Success from "./components/Success";
 import SouthernAdmin from "./pages/SouthernAdmin";
 import QuenchAdmin from "./pages/QuenchAdmin";

@@ -58,7 +58,7 @@ const ContactPage = () => {
               <div>
                 <h3 className="text-gray-300 text-sm font-medium">Email</h3>
                 <p className="text-yellow-400 text-lg font-medium hover:text-yellow-300 transition-colors">
-                  siddhanthchauhan1111mpspn@gmail.com
+                  dishdash@gmail.com
                 </p>
               </div>
             </motion.div>

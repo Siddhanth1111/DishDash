@@ -26,6 +26,9 @@ function KathiAdmin() {
     let pendingList = useMemo(() => {
         return list.filter(x => x.status.includes("pending"));
     }, [list]);
+    const sortedList = useMemo(() => {
+        return [...pendingList].sort((a, b) => new Date(b.time) - new Date(a.time));
+      }, [pendingList]);
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black p-6">
@@ -38,7 +41,7 @@ function KathiAdmin() {
                     <div className="flex justify-center items-center py-20">
                         <div className="w-16 h-16 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin"></div>
                     </div>
-                ) : pendingList.length === 0 ? (
+                ) : sortedList.length === 0 ? (
                     <div className="text-center py-16">
                         <div className="w-24 h-24 mx-auto mb-6 opacity-50 bg-contain bg-center bg-no-repeat"
                             style={{
@@ -50,7 +53,7 @@ function KathiAdmin() {
                     </div>
                 ) : (
                     <div className="space-y-6">
-                        {pendingList.map((order, idx) => (
+                        {sortedList.map((order, idx) => (
                             <div 
                                 key={order._id || idx}
                                 className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-yellow-500 transition-all duration-200"
@@ -75,7 +78,7 @@ function KathiAdmin() {
                                             }`}>
                                                 {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
                                             </span>
-                                            <button className="px-3 py-1 bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg text-sm font-medium transition-colors">
+                                            <button  className="px-3 py-1 bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg text-sm font-medium transition-colors">
                                                 Complete
                                             </button>
                                         </div>
