@@ -156,6 +156,9 @@ const CartModal = ({ cart, setCart, outlet, onClose }) => {
                     <span>Total:</span>
                     <span>₹{totalPrice.toFixed(2)}</span>
                   </div>
+                  <div className="flex justify-between text-lg font-bold text-yellow-400 mb-4">
+                    Use email navimishra2468@gmail.com for testing payment(test mode) if you dont have stripe email
+                  </div>
                   <button
                     onClick={handleCheckout}
                     disabled={loading || cart.length === 0}
