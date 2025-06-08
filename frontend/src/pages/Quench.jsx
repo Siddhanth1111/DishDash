@@ -15,7 +15,7 @@ function Quench() {
 
     useEffect(() => {
         setLoading(true);
-        fetch("http://localhost:8080/menu/quench", {
+        fetch("https://dishdash-v7wp.onrender.com/menu/quench", {
             method: "get",
             headers: {
                 "Content-Type": "application/json"

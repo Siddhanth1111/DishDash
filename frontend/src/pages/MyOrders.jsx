@@ -13,7 +13,7 @@ function MyOrders() {
     if (!userPhone) return;
 
     setLoading(true);
-    fetch("http://localhost:8080/myorders/fetch", {
+    fetch("https://dishdash-v7wp.onrender.com/myorders/fetch", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userPhone }),

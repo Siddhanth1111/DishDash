@@ -6,7 +6,7 @@ function QuenchAdmin() {
 
     useEffect(() => {
         setLoading(true);
-        fetch("http://localhost:8080/admin/quench", {
+        fetch("https://dishdash-v7wp.onrender.com/admin/quench", {
             method: "get",
             headers: {
                 "Content-Type": "application/json"

@@ -6,7 +6,7 @@ function KathiAdmin() {
 
     useEffect(() => {
         setLoading(true);
-        fetch("http://localhost:8080/admin/kathi", {
+        fetch("https://dishdash-v7wp.onrender.com/admin/kathi", {
             method: "get",
             headers: {
                 "Content-Type": "application/json"

@@ -31,7 +31,7 @@ const CartModal = ({ cart, setCart, outlet, onClose }) => {
       );
 
       const response = await fetch(
-        "http://localhost:8080/create-checkout-session/payment",
+        "https://dishdash-v7wp.onrender.com/create-checkout-session/payment",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

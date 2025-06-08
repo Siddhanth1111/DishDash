@@ -11,7 +11,7 @@ const Navbar = () => {
   useEffect(() => {
     if (user) {
       const saveUser = async () => {
-        const res = await fetch("http://localhost:8080/api/users", {
+        const res = await fetch("https://dishdash-v7wp.onrender.com/api/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"

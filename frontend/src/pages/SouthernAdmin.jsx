@@ -6,7 +6,7 @@ function SouthernAdmin() {
 
     useEffect(() => {
         setLoading(true);
-        fetch("http://localhost:8080/admin/southern", {
+        fetch("https://dishdash-v7wp.onrender.com/admin/southern", {
             method: "get",
             headers: {
                 "Content-Type": "application/json"

@@ -18,7 +18,7 @@ export default function Success() {
       const { outlet, totalPrice } = orderDetails;
       const userPhone = user.phoneNumbers?.[0]?.phoneNumber?.replace(/^\+/, "");
 
-      fetch("http://localhost:8080/confirm", {
+      fetch("https://dishdash-v7wp.onrender.com/confirm", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
